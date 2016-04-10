@@ -33,7 +33,18 @@ knit        : slidify::knit2slides
 1. The Yellow lines indicate 1 standard deviation. 
 2. The Blue line represents the mean.
 
-<img src="assets/fig/CI-1.png" title="plot of chunk CI" alt="plot of chunk CI" width="400" height="400" />
+<img src="assets/fig/CI-1.png" title="plot of chunk CI" alt="plot of chunk CI" width="300" height="300" />
+
+```r
+    # make the histogram from rnorm 
+    hist(y, breaks = 30, col = 'lightgray', border = 'white', 
+         main = 'Voters Histogram', xlab = str,
+         xlim = c( min(y), max(y) ) )
+```
+
+```
+## Error in hist(y, breaks = 30, col = "lightgray", border = "white", main = "Voters Histogram", : object 'y' not found
+```
 
 --- .class #id 
 
