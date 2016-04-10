@@ -1,0 +1,74 @@
+---
+title       : Votes Needed by Donald Trump
+subtitle    : Out performing the mean!
+author      : Sonny Rivera
+job         : V.P. of Technology
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## The Demographic Challenge
+
+1. Republicians face a big challenge in increasing republican vote counts amoung various demographics.
+  a. Women Voters
+  b. Non-White Voters
+2. Recent history
+3. Visualize the Challenge
+
+--- .class #id 
+
+## Sourcing the Data
+
+1. The data is collected from presidential elections between 1992 to 2014 (inclusive).
+2. Obtained from "*The Roper Center for Public Opinion Research*".
+3. [Roper Center](http://ropercenter.cornell.edu/polls/us-elections/how-groups-voted/)
+
+--- .class #id 
+
+## Visualize the Challenge
+1. The Yellow lines indicate 1 standard deviation. 
+2. The Blue line represents the mean.
+
+```{r CI, echo=FALSE, out.height=400, out.width=400}
+library(manipulate)
+results <- read.csv("election_results.csv")
+    set.seed(1000)
+
+    # get the mean of the select attribute (Men, Women, Africian-Amarican, White, etc)
+    m <- mean(results[which(results$demographic == "Women"),]$republican)
+    s <-  sd(results[which(results$demographic == "Women"),]$republican)
+    
+    y <- rnorm (1000, m, s)
+
+    str <- paste ("mean() = ", round(mean(y),2))
+    str <- paste (str, " mu = ")
+    str <- paste (str, round(sd(y),2))
+    
+    # make the histogram from rnorm 
+    hist(y, breaks = 30, col = 'lightgray', border = 'white', 
+         main = 'Voters Histogram', xlab = str,
+         xlim = c( min(y), max(y) ) )
+
+    # draw the +/- 1 standard deviation lines
+    abline (v=mean(y) + sd(y),   col='yellow', lw = 2)
+    abline (v=mean(y) - sd(y),   col='yellow', lw = 2)
+
+    # draw the user selection line
+    abline (v=mean(y), col='blue', lw = 4)
+
+```
+
+--- .class #id 
+
+## Summary
+
+1. Clearly, one can see that republican presidential candidates average about 42.5% of the women's vote.
+2. The standard deviation is approximately 3.5%
+3. To achieve the goal of 52% of the women's vote, a result of 3+ standard deviations will be required.
+4. It's highly unlikely!
+
+
