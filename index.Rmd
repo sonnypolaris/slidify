@@ -33,7 +33,7 @@ knit        : slidify::knit2slides
 1. The Yellow lines indicate 1 standard deviation. 
 2. The Blue line represents the mean.
 
-```{r CI, echo=FALSE, out.height=400, out.width=400}
+```{r CI, echo=FALSE, out.height=300, out.width=300}
 library(manipulate)
 results <- read.csv("election_results.csv")
     set.seed(1000)
@@ -59,6 +59,13 @@ results <- read.csv("election_results.csv")
 
     # draw the user selection line
     abline (v=mean(y), col='blue', lw = 4)
+
+```
+```{r, echo=TRUE, results='hide'}
+    # make the histogram from rnorm 
+    hist(y, breaks = 30, col = 'lightgray', border = 'white', 
+         main = 'Voters Histogram', xlab = str,
+         xlim = c( min(y), max(y) ) )
 
 ```
 
