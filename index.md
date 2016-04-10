@@ -6,7 +6,7 @@ job         : V.P. of Technology
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
@@ -42,9 +42,7 @@ knit        : slidify::knit2slides
          xlim = c( min(y), max(y) ) )
 ```
 
-```
-## Error in hist(y, breaks = 30, col = "lightgray", border = "white", main = "Voters Histogram", : object 'y' not found
-```
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 --- .class #id 
 
